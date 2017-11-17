@@ -10,6 +10,7 @@
     "meteor-node-stubs": "~0.2.4",
     "pixi.js": "^4.6.1",
     "react": "^16.1.1",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^16.1.1"
   }
 }

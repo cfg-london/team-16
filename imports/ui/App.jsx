@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import PIXI from 'pixi.js'
+import PIXI from 'pixi.js';
+import AppNav from './AppNav';
 
 export default class App extends Component {
     constructor(props) {
@@ -26,6 +27,7 @@ export default class App extends Component {
 
         var circle = PIXI.Sprite.fromImage('/img/cat.png')
 
+
         this.refs.gameCanvas.appendChild(app.view);
         var basicText = new PIXI.Text('wsaa');
         basicText.x = 100;
@@ -41,6 +43,7 @@ export default class App extends Component {
 
         app.stage.addChild(circle);
 
+        // circle
         app.ticker.add(function(delta) {
           // just for fun, let's rotate mr rabbit a little
           // delta is 1 if running at 100% performance
@@ -79,7 +82,10 @@ export default class App extends Component {
 
     render() {
         return (
+         <div>
+         <AppNav />
          <div className="game-canvas-container" ref="gameCanvas"></div>
-        );
+         </div>
+      );
     }
 }
