@@ -33,7 +33,7 @@ export default class App extends Component {
         basicText.interactive = true;
 
         basicText.on('pointerdown', function(){
-            app.stage.getChildAtIndex(0);
+            // app.stage.getChildAtIndex(0);
             basicText.width *= 2;
             basicText.height *= 2;
         });
