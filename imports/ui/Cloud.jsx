@@ -102,8 +102,8 @@ export default class Cloud extends Component {
           }
         });
 
-        var diffX = 600;
-        var diffY = 130;
+        var diffX = 500;
+        var diffY = 70;
 
         function createImageFromPath(dir, x, y) {
             var image = PIXI.Sprite.fromImage('/img/mapPieces/'+dir);
