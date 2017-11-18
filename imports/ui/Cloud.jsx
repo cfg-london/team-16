@@ -114,16 +114,19 @@ export default class Cloud extends Component {
             image.buttonMode = true;
             image.interactive = true;
             if (image.x - diffX <= 10) {
+              // General info
                 image.on('pointerdown', function(){
-                    window.scrollTo(0, 1200);
+                    window.scrollTo(0, 1800);
                 });
             } else if (image.x - diffX <= 265) {
+              // Pre treatment
                 image.on('pointerdown', function(){
-                    window.scrollTo(0, 800);
+                    window.scrollTo(0, 950);
                 });
             } else if (image.x - diffX <= 265+143) {
+              // During treatment
                 image.on('pointerdown', function(){
-                    window.scrollTo(0, 1700);
+                    window.scrollTo(0, 2700);
                 });
             }
             app.stage.addChild(image);
