@@ -3,6 +3,7 @@ import PIXI from 'pixi.js'
 import Cloud from './Cloud.jsx'
 import AppNav from './AppNav.jsx'
 import Station from './Station.jsx'
+import TreatmentStation from './TreatmentStation.jsx'
 
 export default class App extends Component {
     constructor(props) {
@@ -18,7 +19,8 @@ export default class App extends Component {
         <div>
         <AppNav />
         <Cloud />
-        <Station />
+        <center><Station /></center>
+        <center><TreatmentStation /></center>
         <div className="game-canvas-container" ref="gameCanvas"></div>
         </div>
         );    }
