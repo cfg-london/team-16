@@ -12,6 +12,24 @@ export default class App extends Component {
         });
         this.refs.gameCanvas.appendChild(app.view);
 
+        var style = new PIXI.TextStyle({
+          fontFamily: 'Arvo',
+          fontSize: 20,
+        });
+
+        var style2 = new PIXI.TextStyle({
+          fontFamily: 'Arvo',
+          fontSize: 20,
+          fill: ['#FF0000', '#FF0000']
+        });
+
+        var graphics = new PIXI.Graphics();
+        graphics.lineStyle(0);
+        graphics.beginFill(0x606060, 0.5);
+        graphics.drawRect(0, 200, 1000, 100);
+        app.stage.addChild(graphics);
+
+
         var albert = PIXI.Sprite.fromImage('/img/cat.png')
         albert.buttonMode = true;
         albert.interactive = true;
@@ -36,21 +54,16 @@ export default class App extends Component {
 
 
         var albertInt = 0;
-        var albertList = ['What issue do you have?', 'Follow me!'];
+        var albertList = ['Albert: What issue do you have?', 'Albert: Follow me!'];
         var userInt = 0;
-        var userList = [cancerList, 'My doctor told me I have bone cancer, what should I do?'];
-        var cancerList = [new PIXI.Text('Acute lymphoblastic leukaemia'),
-                          new PIXI.Text('Thyroid cancer'),
-                          new PIXI.Text('Bone cancer'),
-                          new PIXI.Text('Hodgkin lymphoma'),
-                          new PIXI.Text('Melanoma')]
+        var userList = [cancerList, 'You: My doctor told me I have bone cancer, what should I do?'];
+        var cancerList = [new PIXI.Text('Leukaemia', style2),
+                          new PIXI.Text('Thyroid cancer', style2),
+                          new PIXI.Text('Bone cancer', style2),
+                          new PIXI.Text('Melanoma', style2),
+                          new PIXI.Text('Soft tissue sarcomas', style2)];
 
-        var style = new PIXI.TextStyle({
-          fontFamily: 'Arvo',
-          fontSize: 20,
-        });
-
-        var albertText = new PIXI.Text('Hi!');
+        var albertText = new PIXI.Text('Albert: Hi!', style);
         albertText.x = 10;
         albertText.y = 200;
         albertText.buttonMode = true;
@@ -58,11 +71,25 @@ export default class App extends Component {
         albertText.on('pointerdown', function(){
             userText.visible = true;
             albertText.visible = false;
+            if (userInt == 1) { //cancerList
+              userText.visible = false;
+              for (i = 0; i < 5; i++) {
+                cancerList[i].x = 10 + i*180;
+                cancerList[i].y = 200;
+                cancerList[i].buttonMode = true;
+                cancerList[i].interactive = true;
+                cancerList[i].visible = true;
+                app.stage.addChild(cancerList[i]);
+              }
+            }
+            if (userInt == 2) { //conclusion
+              //exit
+            }
             albertText.setText(albertList[albertInt]);
             albertInt++;
         });
 
-        var userText = new PIXI.Text('Hello Albert!');
+        var userText = new PIXI.Text('You: Hello Albert!', style);
         userText.x = 10;
         userText.y = 200;
         userText.buttonMode = true;
@@ -71,18 +98,17 @@ export default class App extends Component {
         userText.on('pointerdown', function(){
             userText.visible = false;
             albertText.visible = true;
-            if (userInt == 1) { //cancerList
-              alert("hi");
-              for (var i = 0; i < 4; i++) {
-                cancerList[i].x = 10 + i*180;
-                cancerList[i].y = 200;
-                cancerList[i].buttonMode = true;
-                cancerList[i].interactive = true;
-                app.stage.addChild(cancerList[i]);
-              }
-            }
             userText.setText(userList[userInt]);
             userInt++;
+        });
+
+        var boneCancerText = cancerList[2];
+        boneCancerText.on('pointerdown', function(){
+            userText.setText(userList[userInt]);
+            userText.visible = true;
+            for (i = 0; i < 5; i++) {
+              cancerList[i].visible = false;
+            }
         });
 
         app.stage.addChild(albertText);
