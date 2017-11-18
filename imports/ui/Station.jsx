@@ -7,7 +7,7 @@ export default class App extends Component {
         super(props);
     }
     componentDidMount() {
-        var app = new PIXI.Application(1000, 300, {
+        var app = new PIXI.Application(1000, 450, {
             // backgroundImage: url("/img/forest.jpg")
             backgroundColor: 0xFFFFFF
 
@@ -17,7 +17,7 @@ export default class App extends Component {
         var landscapeTexture = PIXI.Texture.fromImage("/img/forest.jpg");
 
         // crop the texture to show just 100 px
-        var texture2 = new PIXI.Texture(landscapeTexture, new PIXI.Rectangle(0, 0, 1000, 300));
+        var texture2 = new PIXI.Texture(landscapeTexture, new PIXI.Rectangle(0, 0, 1000, 450));
 
         // new sprite
         var background = new PIXI.Sprite(texture2);
@@ -35,30 +35,40 @@ export default class App extends Component {
         var style = new PIXI.TextStyle({
           fontFamily: 'Arvo',
           fontSize: 20,
+          fill: ['#FFFFFF', '#FFFFFF'],
+          paddingTop: 50,
+          paddingLeft: 80
         });
 
         var style2 = new PIXI.TextStyle({
           fontFamily: 'Arvo',
           fontSize: 20,
-          fill: ['#FF0000', '#FF0000']
+          fill: ['#FF0000', '#FF0000'],
+          paddingTop: 100,
+          paddingLeft: 80
         });
 
         var styleHover = new PIXI.TextStyle({
           fontFamily: 'Arvo',
           fontSize: 20,
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          fill: ['#FFFFFF', '#FFFFFF'],
+          paddingTop: 50,
+          paddingLeft: 80
         });
         var style2Hover = new PIXI.TextStyle({
           fontFamily: 'Arvo',
           fontSize: 20,
-          fill: ['#FF0000', '#FF0000'],
-          fontWeight: 'bold'
+          fill: ['#FF8c00', '#ff8c00'],
+          fontWeight: 'bold',
+          paddingTop: 100,
+          paddingLeft: 80
         });
 
         var graphics = new PIXI.Graphics();
         graphics.lineStyle(3);
-        graphics.beginFill(0x606060, 0.8);
-        graphics.drawRect(0, 200, 1000, 100);
+        graphics.beginFill(0x3f3f3f, 1);
+        graphics.drawRect(0, 350, 1000, 150);
         graphics.alpha = 0.5;
         app.stage.addChild(graphics);
 
@@ -92,8 +102,8 @@ export default class App extends Component {
                           new PIXI.Text('Soft tissue sarcomas', style2)];
 
         var albertText = new PIXI.Text('Albert: Hi!', style);
-        albertText.x = 20;
-        albertText.y = 210;
+        albertText.x = 40;
+        albertText.y = 382;
         albertText.buttonMode = true;
         albertText.interactive = true;
         albertText.mouseover = function(mouseData) {
@@ -108,8 +118,8 @@ export default class App extends Component {
             if (userInt == 1) { //cancerList
               userText.visible = false;
               for (i = 0; i < 5; i++) {
-                cancerList[i].x = 10 + i*180;
-                cancerList[i].y = 200;
+                cancerList[i].x = 40 + i*180;
+                cancerList[i].y = 382;
                 cancerList[i].buttonMode = true;
                 cancerList[i].interactive = true;
                 cancerList[i].visible = true;
@@ -131,8 +141,8 @@ export default class App extends Component {
         });
 
         var userText = new PIXI.Text('You: Hello Albert!', style);
-        userText.x = 20;
-        userText.y = 210;
+        userText.x = 40;
+        userText.y = 382;
         userText.buttonMode = true;
         userText.interactive = true;
         userText.visible = false;

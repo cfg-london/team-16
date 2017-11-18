@@ -21,7 +21,15 @@ export default class App extends Component {
         <div>
         <AppNav />
         <Cloud />
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <center><Station /></center>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <center><TreatmentStation /></center>
         <Map />
          <div className="game-canvas-container" ref="gameCanvas"></div>
