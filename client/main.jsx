@@ -11,5 +11,5 @@ import Cloud from '../imports/ui/Cloud.jsx';
 
 
 Meteor.startup(() => {
-  render(<Cloud />, document.getElementById('render-target'));
+  render(<App />, document.getElementById('render-target'));
 });
