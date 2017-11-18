@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import PIXI from 'pixi.js'
 
+import Cloud from './Cloud.jsx'
+
 export default class Map extends Component {
 
     constructor(props) {
@@ -10,10 +12,94 @@ export default class Map extends Component {
     componentDidMount() {
 
         var app = new PIXI.Application(window.innerWidth, window.innerHeight, {
-            backgroundColor: 0xFFFFFF
+            transparent: true
+        });
+        this.refs.gameCanvas.appendChild(app.view);
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+        }
+
+        var numClouds = 5;
+
+        var sprites = new Array(numClouds);
+        for (var i = 0; i < numClouds; i ++) {
+          sprites[i] = PIXI.Sprite.fromImage('/img/cloud3.png')
+        }
+
+        var spritesRight = new Array(numClouds);
+        for (var i = 0; i < numClouds; i ++) {
+          spritesRight[i] = PIXI.Sprite.fromImage('/img/cloud3.png')
+        }
+
+        for (var i = 0; i < numClouds; i ++) {
+          var randy = Math.random()*app.renderer.height;
+          var randx = Math.random()*app.renderer.width;
+
+          sprites[i].x =  randx;
+          sprites[i].y =  randy;
+          app.stage.addChild(sprites[i]);
+        }
+
+        var diff = 10;
+        for (var i = 0; i < numClouds; i++) {
+            var randy = Math.random()*app.renderer.height;
+            var randx = app.renderer.width - diff - getRandomInt(10, 40);
+            spritesRight[i].x = randx
+            spritesRight[i].y = randy
+            app.stage.addChild(spritesRight[i]);
+            diff += 10;
+        }
+
+        var xVelocity = 1;
+        var yVelocity = 1;
+
+        var goingLeft = new Array(numClouds);
+        var goingRight = new Array(numClouds);
+
+        for (var i = 0; i < numClouds; i ++) {
+          goingLeft[i] = true;
+          goingRight[i] = true;
+        }
+
+        //var goingLeft = true;
+
+        var leftBound = 100;
+        var RightBound = app.renderer.width / 2;
+
+        var secondLeftBound = app.renderer.width * 0.65;
+        var secondRightBound = app.renderer.width - 100;
+
+        app.ticker.add(()=> {
+          for (var j = 0; j < numClouds; j ++) {
+            if (goingLeft[j]) {
+                sprites[j].x += xVelocity;
+            } else {
+                sprites[j].x -= xVelocity;
+            }
+
+            if (goingRight[j]) {
+                spritesRight[j].x -= yVelocity;
+            } else {
+                spritesRight[j].x += yVelocity;
+            }
+
+            if (spritesRight[j].x < secondLeftBound) {
+                goingRight[j] = false;
+            } else if (spritesRight[j].x > secondRightBound){
+                goingRight[j] = true;
+            }
+
+            if (sprites[j].x > RightBound) {
+                goingLeft[j] = false;
+            } else if (sprites[j].x <= leftBound){
+                goingLeft[j] = true;
+            }
+          }
         });
 
-        this.refs.gameCanvas.appendChild(app.view);
 
         // Moving my circle
         function createCircle(x, y, color) {
@@ -31,17 +117,19 @@ export default class Map extends Component {
             return circle
         }
 
+
         var NUM_CIRCLES = 8;
         var centerX = window.innerWidth / 2;
         var centerY = window.innerHeight / 2;
         var ringRadius = 350;
         var textX = centerX - ringRadius + 120;
         var textY = centerY - ringRadius;
+        var circles = [];
 
 
         var circle = new PIXI.Graphics();
         circle.lineStyle(5, 0x000000);
-        circle.beginFill(0xFFFFFF, 0.5);
+        circle.beginFill(0xFFFFFF, 0.2);
         circle.drawCircle(centerX, centerY, ringRadius);
         circle.endFill();
 
@@ -54,17 +142,7 @@ export default class Map extends Component {
 
         app.stage.addChild(circle);
 
-        var circles = [];
-        var colors = [0xcc66ff, 0xff99ff, 0xff5050, 0xff9966, 0xffff99, 0x99ff99, 0x66ffff, 0x4d94ff];
-        for (var i = 0; i < NUM_CIRCLES; i++) {
-            var angle = (i+1) * 2 * Math.PI/NUM_CIRCLES;
-            var x = centerX + Math.cos(angle) * ringRadius;
-            var y = centerY + Math.sin(angle) * ringRadius;
 
-            var tem = createCircle(x, y, colors[i]);
-            circles.push(tem);
-            app.stage.addChild(tem);
-        }
 
         var texts = []
         texts.push('Staying in touch with friends: \n - I got in touch with my friends via Facetime or Skype. That is something I really enjoyed \n - See if your friends can visit you \n - Online games');
@@ -84,6 +162,18 @@ export default class Map extends Component {
         texts.push('CLIC Sargent says: \n - Ask our experts \n - Read stories like yours \n - Join CYPAG \n - Read Shout Out! magazine \n - Share with your friends')
         texts.push(210);
 
+        function resetCircles() {
+          var colors = [0xcc66ff, 0xff99ff, 0xff5050, 0xff9966, 0xffff99, 0x99ff99, 0x66ffff, 0x4d94ff];
+          for (var i = 0; i < NUM_CIRCLES; i++) {
+              var angle = (i+1) * 2 * Math.PI/NUM_CIRCLES;
+              var x = centerX + Math.cos(angle) * ringRadius;
+              var y = centerY + Math.sin(angle) * ringRadius;
+
+              var tem = createCircle(x, y, colors[i]);
+              circles.push(tem);
+              app.stage.addChild(tem);
+          }
+        }
 
         var style = new PIXI.TextStyle({
             fontFamily: 'Arial',
@@ -96,6 +186,8 @@ export default class Map extends Component {
             wordWrap: true,
             wordWrapWidth: 480
         });
+
+        resetCircles();
 
         var richText = new PIXI.Text('Click the circles \n  for Top Tips!', style);
         richText.x = textX + 100;
@@ -117,6 +209,14 @@ export default class Map extends Component {
                 richText = new PIXI.Text(texts[2*count], style);
                 richText.x = textX;
                 richText.y = textY + texts[2*count+1];
+
+                if(count > 8) {
+                  richText = new PIXI.Text('Click the circles \n  for Top Tips!', style);
+                  richText.x = textX + 100;
+                  richText.y = textY + 300;
+                  count = -1;
+                  resetCircles();
+                }
                 app.stage.addChild(richText);
                 count++;
             });
