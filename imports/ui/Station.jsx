@@ -14,10 +14,10 @@ export default class App extends Component {
         });
         this.refs.gameCanvas.appendChild(app.view);
 
-        var landscapeTexture = PIXI.Texture.fromImage("/img/forestCrop.jpg");
+        var landscapeTexture = PIXI.Texture.fromImage("/img/forest.jpg");
 
         // crop the texture to show just 100 px
-        var texture2 = new PIXI.Texture(landscapeTexture, new PIXI.Rectangle(0, 0, 790, 490));
+        var texture2 = new PIXI.Texture(landscapeTexture, new PIXI.Rectangle(0, 0, 1000, 300));
 
         // new sprite
         var background = new PIXI.Sprite(texture2);
