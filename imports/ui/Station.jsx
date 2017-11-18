@@ -80,7 +80,9 @@ export default class App extends Component {
           albertText.setText(albertList[0]);
           userText.visible = false;
           quitText.visible = false;
-
+          nextText.visible = false;
+          albertInt = 0;
+          userInt = 0;
         });
 
         var nextText = new PIXI.Text('Next');
@@ -89,25 +91,46 @@ export default class App extends Component {
         nextText.buttonMode = true;
         nextText.interactive = true;
         nextText.visible = false;
+        var albertTurn = true;
         nextText.on('pointerdown', function(){
-          if (albertInt < 3) {
-            albertText.setText(albertList[albertInt + 1]);
-          } else if (albertInt == 3){
-          albertText.visible = true;
-          albertText.setText(albertList[0]);
-          userText.visible = false;
-          quitText.visible = true;
-          app.stage.removeChild(userTextbox);
-          userTextbox = new PIXI.Graphics();
-          userTextbox.beginFill(20, 0.2);
-          userTextbox.drawRect(userText.x, userText.y, userText.width, userText.height);
-          userTextbox.endFill();
-          app.stage.addChild(userTextbox);
+          if (albertTurn) {
+            if (albertInt < 3) {
+              albertInt = albertInt + 1;
+              albertText.setText(albertList[albertInt]);
+              albertTurn = false;
+            } else (albertInt == 3) {
+              albertInt = 0;
+              albertText.visible = true;
+              albertText.setText(albertList[albertInt]);
+              userText.visible = false;
+              quitText.visible = true;
+              app.stage.removeChild(userTextbox);
+              userTextbox = new PIXI.Graphics();
+              userTextbox.beginFill(20, 0.2);
+              userTextbox.drawRect(userText.x, userText.y, userText.width, userText.height);
+              userTextbox.endFill();
+              app.stage.addChild(userTextbox);
+            }
+          } else {
+              if (userInt < 3) {
+                userInt = userInt + 1;
+                userText.setText(userList[userInt]);
+                albertTurn = true;
+              } else (userInt == 3) {
+                userInt = 0;
+                albertText.visible = true;
+                userText.setText(userList[userInt]);
+                userText.visible = false;
+                quitText.visible = true;
+                app.stage.removeChild(userTextbox);
+                userTextbox = new PIXI.Graphics();
+                userTextbox.beginFill(20, 0.2);
+                userTextbox.drawRect(userText.x, userText.y, userText.width, userText.height);
+                userTextbox.endFill();
+                app.stage.addChild(userTextbox);
+            }
           }
-        userText.on('pointerdown', function(){
-            userText.setText('CHanged!');
-
-        });
+          });
 
         app.stage.addChild(albertText);
         app.stage.addChild(userText);
