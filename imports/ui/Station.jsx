@@ -36,6 +36,8 @@ export default class App extends Component {
           fontFamily: 'Arvo',
           fontSize: 20,
           fill: ['#FFFFFF', '#FFFFFF'],
+          wordWrap: true,
+          wordWrapWidth: 900,
           paddingTop: 50,
           paddingLeft: 80
         });
@@ -44,6 +46,8 @@ export default class App extends Component {
           fontFamily: 'Arvo',
           fontSize: 20,
           fill: ['#FF0000', '#FF0000'],
+          wordWrap: true,
+          wordWrapWidth: 900,
           paddingTop: 100,
           paddingLeft: 80
         });
@@ -53,6 +57,8 @@ export default class App extends Component {
           fontSize: 20,
           fontWeight: 'bold',
           fill: ['#FFFFFF', '#FFFFFF'],
+          wordWrap: true,
+          wordWrapWidth: 900,
           paddingTop: 50,
           paddingLeft: 80
         });
@@ -60,6 +66,8 @@ export default class App extends Component {
           fontFamily: 'Arvo',
           fontSize: 20,
           fill: ['#FF8c00', '#ff8c00'],
+          wordWrap: true,
+          wordWrapWidth: 900,
           fontWeight: 'bold',
           paddingTop: 100,
           paddingLeft: 80

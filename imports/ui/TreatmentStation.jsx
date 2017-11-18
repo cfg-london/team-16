@@ -7,7 +7,7 @@ export default class App extends Component {
         super(props);
     }
     componentDidMount() {
-        var app = new PIXI.Application(1000, 300, {
+        var app = new PIXI.Application(1000, 450, {
             backgroundColor: 0xFFFFFF
         });
         this.refs.gameCanvas.appendChild(app.view);
@@ -15,7 +15,7 @@ export default class App extends Component {
         var landscapeTexture = PIXI.Texture.fromImage("/img/beach.jpg");
 
         // crop the texture to show just 100 px
-        var texture2 = new PIXI.Texture(landscapeTexture, new PIXI.Rectangle(0, 150, 1000, 300));
+        var texture2 = new PIXI.Texture(landscapeTexture, new PIXI.Rectangle(0, 50, 1000, 450));
 
         // new sprite
         var background = new PIXI.Sprite(texture2);
@@ -31,8 +31,9 @@ export default class App extends Component {
         var style = new PIXI.TextStyle({
           fontFamily: 'Arvo',
           fontSize: 20,
+          fill: ['#FFFFFF', '#FFFFFF'],
           wordWrap: true,
-          wordWrapWidth: 950,
+          wordWrapWidth: 900,
           paddingTop: 50,
           paddingLeft: 80
         });
@@ -42,7 +43,7 @@ export default class App extends Component {
           fontSize: 20,
           fill: ['#FF0000', '#FF0000'],
           wordWrap: true,
-          wordWrapWidth:950,
+          wordWrapWidth: 900,
           paddingTop: 100,
           paddingLeft: 80
         });
@@ -51,26 +52,28 @@ export default class App extends Component {
           fontFamily: 'Arvo',
           fontSize: 20,
           fontWeight: 'bold',
+          fill: ['#FFFFFF', '#FFFFFF'],
           wordWrap: true,
-          wordWrapWidth: 950,
+          wordWrapWidth: 900,
           paddingTop: 50,
-          paddingLeft: 80,
-          paddingTop: 100,
           paddingLeft: 80
         });
         var style2Hover = new PIXI.TextStyle({
           fontFamily: 'Arvo',
           fontSize: 20,
-          fill: ['#FF0000', '#FF0000'],
-          fontWeight: 'bold',
+          fill: ['#FF8c00', '#ff8c00'],
           wordWrap: true,
-          wordWrapWidth: 950
+          wordWrapWidth: 900,
+          fontWeight: 'bold',
+          paddingTop: 100,
+          paddingLeft: 80
         });
+
 
         var graphics = new PIXI.Graphics();
         graphics.lineStyle(3);
-        graphics.beginFill(0x606060, 0.8);
-        graphics.drawRect(0, 200, 1000, 100);
+        graphics.beginFill(0x3f3f3f, 1);
+        graphics.drawRect(0, 350, 1000, 150);
         graphics.alpha = 0.5;
         app.stage.addChild(graphics);
 
@@ -97,7 +100,7 @@ export default class App extends Component {
 
         var albertInt = 0;
         var albertList = ['Albert: Surgery is when the doctors take out the tumour from your body. They make sure you are asleep so nothing will hurt!',
-         'Albert: They may give you some drugs for the surgery and you might feel a little more emotional than normal. Sometimes you gain a little weight from it, but this is completely normal. Do not forget you can always talk to your doctor or your parents if you feel uncomfortable.',
+         'Albert: They may give you some drugs for the surgery and you might feel a little more emotional than normal. Sometimes you gain a little weight from it, but this is completely normal.',
          'Albert: Don\'t worry! No matter what happens to your body, you are still you and your friends will always be there for you. And you can even make new friends through CLIC Sargent!'];
         var userInt = 0;
         var userList = ['You: I think I have to do surgery.', 'You: Will anything happen?',
@@ -105,8 +108,8 @@ export default class App extends Component {
         var treatmentList = [new PIXI.Text('Surgery', style2), new PIXI.Text('Chemotherapy', style2), new PIXI.Text('Radiotherapy', style2)];
 
         var albertText = new PIXI.Text('Albert: Depending on your situation, you might have to do surgery, radiotherapy, or chemotherapy. What did the doctor tell you?', style);
-        albertText.x = 10;
-        albertText.y = 200;
+        albertText.x = 40;
+        albertText.y = 370;
         albertText.buttonMode = true;
         albertText.interactive = true;
         albertText.visible = false;
@@ -122,8 +125,8 @@ export default class App extends Component {
             if (userInt == 1) { //treatment list
               userText.visible = false;
               for (i = 0; i < 3; i++) {
-                treatmentList[i].x = 10 + i * 300;
-                treatmentList[i].y = 200;
+                treatmentList[i].x = 40 + i * 300;
+                treatmentList[i].y = 382;
                 treatmentList[i].buttonMode = true;
                 treatmentList[i].interactive = true;
                 treatmentList[i].visible = true;
@@ -141,8 +144,8 @@ export default class App extends Component {
         });
 
         var userText = new PIXI.Text('You: What treatment do I need?', style);
-        userText.x = 10;
-        userText.y = 200;
+        userText.x = 40;
+        userText.y = 382;
         userText.buttonMode = true;
         userText.interactive = true;
         userText.mouseover = function(mouseData) {
