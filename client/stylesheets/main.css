@@ -14,8 +14,8 @@ body {
 
 
 .navbar-default {
-    background: none;
+    background: none !important;
     background-image: none;
-    height: 20px;
-    border: 0;
+    height: 20px  !important;
+    border: 0 !important;
 }

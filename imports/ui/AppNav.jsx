@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Nav, NavItem, Navbar} from 'react-bootstrap';
+import {Image, Nav, NavItem, Navbar} from 'react-bootstrap';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 
@@ -10,7 +10,7 @@ export default class AppNav extends Component {
     <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="#">React-Bootstrap</a>
+        <Image href="logo.png"/>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
