@@ -2,13 +2,13 @@
 
 html {
   height: 110%;
-  background: linear-gradient(#0aa2e3, #77cde6);;
 }
 
 body {
 /*  background: linear-gradient(#0aa2e3, #77cde6);
   background-image: url("/img/board.png");
-*/
+  */
+  background: linear-gradient(#0aa2e3, #77cde6);
 }
 
 

@@ -17,7 +17,7 @@ export default class App extends Component {
         var landscapeTexture = PIXI.Texture.fromImage("/img/forestCrop.jpg");
 
         // crop the texture to show just 100 px
-        var texture2 = new PIXI.Texture(landscapeTexture, new PIXI.Rectangle(0, 0, 500, 300));
+        var texture2 = new PIXI.Texture(landscapeTexture, new PIXI.Rectangle(0, 0, 790, 490));
 
         // new sprite
         var background = new PIXI.Sprite(texture2);
