@@ -23,6 +23,18 @@ export default class App extends Component {
           fill: ['#FF0000', '#FF0000']
         });
 
+        var styleHover = new PIXI.TextStyle({
+          fontFamily: 'Arvo',
+          fontSize: 20,
+          fontWeight: 'bold'
+        });
+        var style2Hover = new PIXI.TextStyle({
+          fontFamily: 'Arvo',
+          fontSize: 20,
+          fill: ['#FF0000', '#FF0000'],
+          fontWeight: 'bold'
+        });
+
         var graphics = new PIXI.Graphics();
         graphics.lineStyle(0);
         graphics.beginFill(0x606060, 0.5);
@@ -30,9 +42,9 @@ export default class App extends Component {
         app.stage.addChild(graphics);
 
 
-        var albert = PIXI.Sprite.fromImage('/img/cat.png')
-        albert.buttonMode = true;
-        albert.interactive = true;
+        var albert = PIXI.Sprite.fromImage('/img/Hat_man1.png');
+        // albert.buttonMode = true;
+        // albert.interactive = true;
         albert.anchor.set(0.5);
         albert.x = (app.renderer.width * 2) / 3;
         albert.y = app.renderer.height / 2;
@@ -40,9 +52,9 @@ export default class App extends Component {
         });
         app.stage.addChild(albert);
 
-        var user = PIXI.Sprite.fromImage('/img/cat.png')
-        user.buttonMode = true;
-        user.interactive = true;
+        var user = PIXI.Sprite.fromImage('/img/Hat_man2.png');
+        // user.buttonMode = true;
+        // user.interactive = true;
         user.anchor.set(0.5);
         user.x = (app.renderer.width * 1) / 3;
         user.y = app.renderer.height / 2;
@@ -61,10 +73,16 @@ export default class App extends Component {
                           new PIXI.Text('Soft tissue sarcomas', style2)];
 
         var albertText = new PIXI.Text('Albert: Hi!', style);
-        albertText.x = 10;
-        albertText.y = 200;
+        albertText.x = 20;
+        albertText.y = 210;
         albertText.buttonMode = true;
         albertText.interactive = true;
+        albertText.mouseover = function(mouseData) {
+          this.style = styleHover;
+        }
+        albertText.mouseout = function(mouseData) {
+          this.style = style;
+        }
         albertText.on('pointerdown', function(){
             userText.visible = true;
             albertText.visible = false;
@@ -76,6 +94,12 @@ export default class App extends Component {
                 cancerList[i].buttonMode = true;
                 cancerList[i].interactive = true;
                 cancerList[i].visible = true;
+                cancerList[i].mouseover = function(mouseData) {
+                  this.style = style2Hover;
+                }
+                cancerList[i].mouseout = function(mouseData) {
+                  this.style = style2;
+                }
                 app.stage.addChild(cancerList[i]);
               }
             }
@@ -88,11 +112,17 @@ export default class App extends Component {
         });
 
         var userText = new PIXI.Text('You: Hello Albert!', style);
-        userText.x = 10;
-        userText.y = 200;
+        userText.x = 20;
+        userText.y = 210;
         userText.buttonMode = true;
         userText.interactive = true;
         userText.visible = false;
+        userText.mouseover = function(mouseData) {
+          this.style = styleHover;
+        }
+        userText.mouseout = function(mouseData) {
+          this.style = style;
+        }
         userText.on('pointerdown', function(){
             userText.visible = false;
             albertText.visible = true;
@@ -112,7 +142,6 @@ export default class App extends Component {
         app.stage.addChild(albertText);
         app.stage.addChild(userText);
     }
-
 
     render() {
         return (
