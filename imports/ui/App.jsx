@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import PIXI from 'pixi.js'
 
-import Station from './Station.jsx'
+import TreatmentStation from './TreatmentStation.jsx'
 import AppNav from './AppNav';
 
 export default class App extends Component {
@@ -86,7 +86,7 @@ export default class App extends Component {
         return (
         <div>
         <AppNav />
-        <Station />
+        <TreatmentStation />
          <div className="game-canvas-container" ref="gameCanvas"></div>
          </div>
         );

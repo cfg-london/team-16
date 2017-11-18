@@ -15,12 +15,16 @@ export default class App extends Component {
         var style = new PIXI.TextStyle({
           fontFamily: 'Arvo',
           fontSize: 20,
+          wordWrap: true,
+          wordWrapWidth: 950
         });
 
         var style2 = new PIXI.TextStyle({
           fontFamily: 'Arvo',
           fontSize: 20,
-          fill: ['#FF0000', '#FF0000']
+          fill: ['#FF0000', '#FF0000'],
+          wordWrap: true,
+          wordWrapWidth:950
         });
 
         var graphics = new PIXI.Graphics();
@@ -51,48 +55,43 @@ export default class App extends Component {
         app.stage.addChild(user);
 
         var albertInt = 0;
-        var albertList = ['Albert: What issue do you have?', 'Albert: Follow me!'];
+        var albertList = ['Albert: Surgery is when the doctors take out the tumour from your body. They make sure you are asleep so nothing will hurt!',
+         'Albert: They may give you some drugs for the surgery and you might feel a little more emotional than normal. Sometimes you gain a little weight from it, but this is completely normal. Do not forget you can always talk to your doctor or your parents if you feel uncomfortable.',
+         'Albert: Don\'t worry! No matter what happens to your body, you are still you and your friends will always be there for you. And you can even make new friends through CLIC Sargent!'];
         var userInt = 0;
-        var userList = [cancerList, 'You: My doctor told me I have bone cancer, what should I do?'];
-        var cancerList = [new PIXI.Text('Leukaemia', style2),
-                          new PIXI.Text('Thyroid cancer', style2),
-                          new PIXI.Text('Bone cancer', style2),
-                          new PIXI.Text('Melanoma', style2),
-                          new PIXI.Text('Soft tissue sarcomas', style2)];
+        var userList = ['You: I think I have to do surgery.', 'You: Will anything happen?',
+                        'You: I\'m scared my friends don\'t want to talk to me anymore, what can I do?', 'You: Thanks Albert! But what happens afterwards?'];
+        var treatmentList = [new PIXI.Text('Surgery', style2), new PIXI.Text('Chemotherapy', style2), new PIXI.Text('Radiotherapy', style2)];
 
-        var albertText = new PIXI.Text('Albert: Hi!', style);
+        var albertText = new PIXI.Text('Albert: Depending on your situation, you might have to do surgery, radiotherapy, or chemotherapy. What did the doctor tell you?', style);
         albertText.x = 10;
         albertText.y = 200;
         albertText.buttonMode = true;
         albertText.interactive = true;
+        albertText.visible = false;
         albertText.on('pointerdown', function(){
             userText.visible = true;
             albertText.visible = false;
-            if (userInt == 1) { //cancerList
+            if (userInt == 1) { //treatment list
               userText.visible = false;
-              for (i = 0; i < 5; i++) {
-                cancerList[i].x = 10 + i*180;
-                cancerList[i].y = 200;
-                cancerList[i].buttonMode = true;
-                cancerList[i].interactive = true;
-                cancerList[i].visible = true;
-                app.stage.addChild(cancerList[i]);
+              for (i = 0; i < 3; i++) {
+                treatmentList[i].x = 10 + i * 300;
+                treatmentList[i].y = 200;
+                treatmentList[i].buttonMode = true;
+                treatmentList[i].interactive = true;
+                treatmentList[i].visible = true;
+                app.stage.addChild(treatmentList[i]);
               }
-            }
-            if (userInt == 2) { //conclusion
-              userText.visible = false;
-              //exit
             }
             albertText.setText(albertList[albertInt]);
             albertInt++;
         });
 
-        var userText = new PIXI.Text('You: Hello Albert!', style);
+        var userText = new PIXI.Text('You: What treatment do I need?', style);
         userText.x = 10;
         userText.y = 200;
         userText.buttonMode = true;
         userText.interactive = true;
-        userText.visible = false;
         userText.on('pointerdown', function(){
             userText.visible = false;
             albertText.visible = true;
@@ -100,12 +99,11 @@ export default class App extends Component {
             userInt++;
         });
 
-        var boneCancerText = cancerList[2];
-        boneCancerText.on('pointerdown', function(){
-            userText.setText(userList[userInt]);
+        var surgeryText = treatmentList[0];
+        surgeryText.on('pointerdown', function(){
             userText.visible = true;
-            for (i = 0; i < 5; i++) {
-              cancerList[i].visible = false;
+            for (i = 0; i < 3; i++) {
+              treatmentList[i].visible = false;
             }
         });
 
