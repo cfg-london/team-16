@@ -10,34 +10,60 @@ export default class Cloud extends Component {
     componentDidMount() {
 
         var app = new PIXI.Application(window.innerWidth, window.innerHeight, {
-            backgroundColor: 0xFFFFFF
+            transparent: true
         });
         this.refs.gameCanvas.appendChild(app.view);
 
 
-        var sprite = PIXI.Sprite.fromImage('/img/cloud.png');
-        sprite.x = 150// app.renderer.width / 2;
-        sprite.y = 150 // app.renderer.height / 2;
-        app.stage.addChild(sprite);
+        //var sprite = PIXI.Sprite.fromImage('/img/cloud2.png');
+
+        var numClouds = 5;
+
+        var sprites = new Array(numClouds);
+        for (var i = 0; i < numClouds; i ++) {
+          sprites[i] = PIXI.Sprite.fromImage('/img/cloud2.png')
+        }
+
+
+        for (var i = 0; i < numClouds; i ++) {
+          var randy = Math.random()*app.renderer.width / 2;
+          var randx = Math.random()*app.renderer.width / 2;
+
+          sprites[i].x =  randx;
+          sprites[i].y =  randy;
+          app.stage.addChild(sprites[i]);
+        }
+
+
 
         var xVelocity = 1;
-        var goingLeft = true;
+
+        var goingLeft = new Array(numClouds);
+
+        for (var i = 0; i < numClouds; i ++) {
+          goingLeft[i] = true;
+        }
+
+        //var goingLeft = true;
 
         app.ticker.add(()=> {
-            if (goingLeft) {
-                sprite.x += xVelocity;
+          for (var j = 0; j < numClouds; j ++) {
+            if (goingLeft[j]) {
+                sprites[j].x += xVelocity;
             } else {
-                sprite.x -= xVelocity;
+                sprites[j].x -= xVelocity;
             }
 
-            if (sprite.x > 450) {
-                goingLeft = false;
-            } else if (sprite.x <= 150){
-                goingLeft = true;
+            if (sprites[j].x > 450) {
+                goingLeft[j] = false;
+            } else if (sprites[j].x <= 150){
+                goingLeft[j] = true;
             }
+          }
         });
 
     }
+
 
 
     render() {

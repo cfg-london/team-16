@@ -7,5 +7,5 @@ import Map from '../imports/ui/Map.jsx';
 import Cloud from '../imports/ui/Cloud.jsx';
 
 Meteor.startup(() => {
-  render(<Map />, document.getElementById('render-target'));
+  render(<Cloud />, document.getElementById('render-target'));
 });

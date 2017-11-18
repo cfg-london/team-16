@@ -1,0 +1,22 @@
+/* CSS declarations go here */
+
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(#0aa2e3, #77cde6);
+  background-image: url("/img/board2.png");
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+.navbar-default {
+    background: none !important;
+    background-image: none;
+    height: 20px  !important;
+    border: 0 !important;
+}
