@@ -21,49 +21,49 @@ export default class App extends Component {
         // basicText.x = 30;
         // basicText.y = 90;
         // this.stage.addChild(basicText);
-
-
-        var app = new PIXI.Application(1000, 300, {
-            backgroundColor: 0x00FF00
-        });
-
-        var circle = PIXI.Sprite.fromImage('/img/cat.png')
-
-
-        this.refs.gameCanvas.appendChild(app.view);
-        var basicText = new PIXI.Text('wsaa');
-        basicText.x = 100;
-        basicText.y = 100;
-
-        basicText.buttonMode = true;
-        basicText.interactive = true;
-
-        // Moving my circle
-        circle.anchor.set(0.5);
-        circle.x = app.renderer.width / 2;
-        circle.y = app.renderer.height / 2;
-
-        app.stage.addChild(circle);
-
-        // circle
-        app.ticker.add(function(delta) {
-          // just for fun, let's rotate mr rabbit a little
-          // delta is 1 if running at 100% performance
-          // creates frame-independent tranformation
-          circle.rotation += 0.1 * delta;
-        });
-
-
-        basicText.on('pointerdown', function(){
-            // app.stage.getChildAtIndex(0);
-            basicText.width *= 2;
-            basicText.height *= 2;
-        });
-        app.stage.addChild(basicText);
-
-        function abc () {
-            console.log('hello, world')
-        }
+        //
+        //
+        // var app = new PIXI.Application(1000, 300, {
+        //     backgroundColor: 0x00FF00
+        // });
+        //
+        // var circle = PIXI.Sprite.fromImage('/img/cat.png')
+        //
+        //
+        // this.refs.gameCanvas.appendChild(app.view);
+        // var basicText = new PIXI.Text('wsaa');
+        // basicText.x = 100;
+        // basicText.y = 100;
+        //
+        // basicText.buttonMode = true;
+        // basicText.interactive = true;
+        //
+        // // Moving my circle
+        // circle.anchor.set(0.5);
+        // circle.x = app.renderer.width / 2;
+        // circle.y = app.renderer.height / 2;
+        //
+        // app.stage.addChild(circle);
+        //
+        // // circle
+        // app.ticker.add(function(delta) {
+        //   // just for fun, let's rotate mr rabbit a little
+        //   // delta is 1 if running at 100% performance
+        //   // creates frame-independent tranformation
+        //   circle.rotation += 0.1 * delta;
+        // });
+        //
+        //
+        // basicText.on('pointerdown', function(){
+        //     // app.stage.getChildAtIndex(0);
+        //     basicText.width *= 2;
+        //     basicText.height *= 2;
+        // });
+        // app.stage.addChild(basicText);
+        //
+        // function abc () {
+        //     console.log('hello, world')
+        // }
 
         /*
         this.app = new Pixi.Application(window.innerWidth, window.innerHeight);
