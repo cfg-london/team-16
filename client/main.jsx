@@ -9,15 +9,7 @@ import Cloud from '../imports/ui/Cloud.jsx';
 
 // find out coords via image scale
 
-// var img = document.getElementById("board");
-// var height = img.height;
-// var width = img.width;
-
-const coords="0, 0, 100, 102";
-
-
 
 Meteor.startup(() => {
-  document.getElementById("firstRegion").coords = coords;
   render(<Cloud />, document.getElementById('render-target'));
 });
