@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import PIXI from 'pixi.js'
-
+import Cloud from './Cloud.jsx'
+import AppNav from './AppNav.jsx'
 import Station from './Station.jsx'
-import AppNav from './AppNav';
 
 export default class App extends Component {
     constructor(props) {
@@ -86,9 +86,8 @@ export default class App extends Component {
         return (
         <div>
         <AppNav />
-        <Station />
-         <div className="game-canvas-container" ref="gameCanvas"></div>
-         </div>
-        );
-    }
+        <Cloud />
+        <div className="game-canvas-container" ref="gameCanvas"></div>
+        </div>
+        );    }
 }
