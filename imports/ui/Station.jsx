@@ -36,9 +36,10 @@ export default class App extends Component {
         });
 
         var graphics = new PIXI.Graphics();
-        graphics.lineStyle(0);
+        graphics.lineStyle(3);
         graphics.beginFill(0x606060, 0.5);
         graphics.drawRect(0, 200, 1000, 100);
+        graphics.alpha = 0.5;
         app.stage.addChild(graphics);
 
 
