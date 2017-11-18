@@ -5,36 +5,10 @@
 </head>
 
 <body>
-  <div align="center">
-  <img src="/img/board.png" class="board" id="board" usemap="#boardmap"/>
-  </div>
 
   <map name="boardmap">
     <area shape="rect" id="firstRegion" href="/ay" />
   </map>
   <div id="render-target"></div>
   <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  <script type="text/javascript">
-  var img = document.getElementById("board");
-  console.log(img.height);
-  var height = img.height;
-  var width = img.width;
-
-  var scale = height/2000.00;
-
-  var x1 = 603*scale;
-  var y1 = 369*scale;
-
-  var x2 = 1108*scale;
-  var y2 = 635*scale;
-
-
-  const coords= "" + x1 + ", " + y1 + ", " + x2 + ", " + y2
-
-  document.getElementById("firstRegion").coords = coords;
-
-
-
-
-</script>
 </body>

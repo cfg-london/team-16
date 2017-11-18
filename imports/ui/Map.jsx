@@ -120,7 +120,29 @@ export default class Map extends Component {
                 app.stage.addChild(richText);
                 count++;
             });
-        })
+        });
+
+        function createImageFromPath(dir, x, y) {
+            var image = PIXI.Sprite.fromImage('/img/mapPieces/'+dir);
+            image.x = x;
+            image.y = y;
+            image.buttonMode = true;
+            image.interactive = true;
+
+            image.on('pointerdown', function(){
+                console.log('hello');
+            });
+            
+            app.stage.addChild(image);
+        }
+
+        createImageFromPath('piece1.png', 10, 10);
+        createImageFromPath('piece2.png', 40, 40);
+        createImageFromPath('piece3.png', 80, 80);
+        createImageFromPath('piece4.png', 120, 120);
+        createImageFromPath('piece5.png', 140, 140);
+        createImageFromPath('piece6.png', 160, 160);
+
     }
 
     render() {
