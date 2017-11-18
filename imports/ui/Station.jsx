@@ -51,6 +51,14 @@ export default class App extends Component {
             userText.visible = true;
             nextText.visible = true;
             quitText.visible = true;
+
+            albertText.setText('Hello! I am albert.');
+            app.stage.removeChild(albertTextbox);
+            albertTextbox = new PIXI.Graphics();
+            albertTextbox.beginFill(20, 0.2);
+            albertTextbox.drawRect(albertText.x, albertText.y, albertText.width, albertText.height);
+            albertTextbox.endFill();
+            app.stage.addChild(albertTextbox);
         });
 
 
@@ -89,7 +97,16 @@ export default class App extends Component {
           albertText.setText(albertList[0]);
           userText.visible = false;
           quitText.visible = true;
+          app.stage.removeChild(userTextbox);
+          userTextbox = new PIXI.Graphics();
+          userTextbox.beginFill(20, 0.2);
+          userTextbox.drawRect(userText.x, userText.y, userText.width, userText.height);
+          userTextbox.endFill();
+          app.stage.addChild(userTextbox);
           }
+        userText.on('pointerdown', function(){
+            userText.setText('CHanged!');
+
         });
 
         app.stage.addChild(albertText);
@@ -98,6 +115,18 @@ export default class App extends Component {
         app.stage.addChild(quitText);
 
 
+
+        var albertTextbox = new PIXI.Graphics();
+        albertTextbox.beginFill(20, 0.2);
+        albertTextbox.drawRect(albertText.x, albertText.y, albertText.width, albertText.height);
+        albertTextbox.endFill();
+        app.stage.addChild(albertTextbox);
+
+        var userTextbox = new PIXI.Graphics();
+        userTextbox.beginFill(20, 0.2);
+        userTextbox.drawRect(userText.x, userText.y, userText.width, userText.height);
+        userTextbox.endFill();
+        app.stage.addChild(userTextbox);
 
     }
 
