@@ -58,6 +58,12 @@ export default class App extends Component {
 
         albertText.on('pointerdown', function(){
             albertText.setText('Hello! I am albert.');
+            app.stage.removeChild(albertTextbox);
+            albertTextbox = new PIXI.Graphics();
+            albertTextbox.beginFill(20, 0.2);
+            albertTextbox.drawRect(albertText.x, albertText.y, albertText.width, albertText.height);
+            albertTextbox.endFill();
+            app.stage.addChild(albertTextbox);
         });
 
         var userText = new PIXI.Text('Hi, who are you?');
@@ -69,10 +75,28 @@ export default class App extends Component {
 
         userText.on('pointerdown', function(){
             userText.setText('CHanged!');
+            app.stage.removeChild(userTextbox);
+            userTextbox = new PIXI.Graphics();
+            userTextbox.beginFill(20, 0.2);
+            userTextbox.drawRect(userText.x, userText.y, userText.width, userText.height);
+            userTextbox.endFill();
+            app.stage.addChild(userTextbox);
         });
 
         app.stage.addChild(albertText);
         app.stage.addChild(userText);
+
+        var albertTextbox = new PIXI.Graphics();
+        albertTextbox.beginFill(20, 0.2);
+        albertTextbox.drawRect(albertText.x, albertText.y, albertText.width, albertText.height);
+        albertTextbox.endFill();
+        app.stage.addChild(albertTextbox);
+
+        var userTextbox = new PIXI.Graphics();
+        userTextbox.beginFill(20, 0.2);
+        userTextbox.drawRect(userText.x, userText.y, userText.width, userText.height);
+        userTextbox.endFill();
+        app.stage.addChild(userTextbox);
 
     }
 
