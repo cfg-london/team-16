@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import PIXI from 'pixi.js'
+
 import Station from './Station.jsx'
+import AppNav from './AppNav';
 
 export default class App extends Component {
     constructor(props) {
         super(props);
     }
-
 
     componentDidMount() {
         // this.renderer = PIXI.autoDetectRenderer(1366, 768);
@@ -21,11 +22,13 @@ export default class App extends Component {
         // basicText.y = 90;
         // this.stage.addChild(basicText);
 
+
         var app = new PIXI.Application(1000, 300, {
             backgroundColor: 0x00FF00
         });
 
         var circle = PIXI.Sprite.fromImage('/img/cat.png')
+
 
         this.refs.gameCanvas.appendChild(app.view);
         var basicText = new PIXI.Text('wsaa');
@@ -42,6 +45,7 @@ export default class App extends Component {
 
         app.stage.addChild(circle);
 
+        // circle
         app.ticker.add(function(delta) {
           // just for fun, let's rotate mr rabbit a little
           // delta is 1 if running at 100% performance
@@ -80,10 +84,19 @@ export default class App extends Component {
 
     render() {
         return (
+<<<<<<< HEAD
         <div>
         <Station />
          <div className="game-canvas-container" ref="gameCanvas"></div>
          </div>
         );
+=======
+         <div>
+         <AppNav />
+         <p classID="helo"> jel </p>
+         <div className="game-canvas-container" ref="gameCanvas"></div>
+         </div>
+      );
+>>>>>>> fe6929f8f997346c6d5eabe310819197fc1634bb
     }
 }
