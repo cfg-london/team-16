@@ -86,9 +86,8 @@ export default class App extends Component {
         return (
         <div>
         <AppNav />
-        <Station />
         <Cloud />
-         <div className="game-canvas-container" ref="gameCanvas"></div>
-         </div>
+        <div className="game-canvas-container" ref="gameCanvas"></div>
+        </div>
         );    }
 }
