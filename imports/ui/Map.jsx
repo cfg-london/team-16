@@ -104,7 +104,7 @@ export default class Map extends Component {
         // Moving my circle
         function createCircle(x, y, color) {
             var circle = new PIXI.Graphics();
-            circle.lineStyle(2, 0x000000);
+            circle.lineStyle(10, 0x000000);
             circle.beginFill(color, 1);
             circle.drawCircle(x, y, 35);
             circle.endFill();
@@ -128,7 +128,7 @@ export default class Map extends Component {
 
 
         var circle = new PIXI.Graphics();
-        circle.lineStyle(5, 0x000000);
+        circle.lineStyle(20, 0x000000);
         circle.beginFill(0xFFFFFF, 0.2);
         circle.drawCircle(centerX, centerY, ringRadius);
         circle.endFill();
@@ -201,7 +201,7 @@ export default class Map extends Component {
         circles.forEach(function(item) {
             item.on('pointerdown', function() {
                 item.clear();
-                item.lineStyle(2, 0x000000);
+                item.lineStyle(10, 0x000000);
                 item.beginFill(0x00cc66, 1);
                 item.drawCircle(item.recordX, item.recordY, 35);
                 item.endFill();
