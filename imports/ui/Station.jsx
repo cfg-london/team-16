@@ -63,9 +63,6 @@ export default class App extends Component {
         });
         app.stage.addChild(user);
 
-        var albertsTurn = true;
-
-
         var albertInt = 0;
         var albertList = ['Albert: What issue do you have?', 'Albert: Follow me!'];
         var userInt = 0;
@@ -108,6 +105,7 @@ export default class App extends Component {
               }
             }
             if (userInt == 2) { //conclusion
+              userText.visible = false;
               //exit
             }
             albertText.setText(albertList[albertInt]);
