@@ -115,7 +115,7 @@ export default class Cloud extends Component {
             image.interactive = true;
 
             image.on('pointerdown', function(){
-                console.log('hello');
+                console.log(window.scrollTo(0,1000));
             });
             app.stage.addChild(image);
         }
