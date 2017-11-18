@@ -36,9 +36,14 @@ export default class App extends Component {
 
 
         var albertInt = 0;
-        var albertList = ['Follow me!'];
+        var albertList = ['What issue do you have?', 'Follow me!'];
         var userInt = 0;
-        var userList = ['My doctor told me I have bone cancer, what should I do?'];
+        var userList = [cancerList, 'My doctor told me I have bone cancer, what should I do?'];
+        var cancerList = [new PIXI.Text('Acute lymphoblastic leukaemia'),
+                          new PIXI.Text('Thyroid cancer'),
+                          new PIXI.Text('Bone cancer'),
+                          new PIXI.Text('Hodgkin lymphoma'),
+                          new PIXI.Text('Melanoma')]
 
         var albertText = new PIXI.Text('Hi!');
         albertText.x = 10;
@@ -52,7 +57,7 @@ export default class App extends Component {
             albertInt++;
         });
 
-        var userText = new PIXI.Text('Hello albert!');
+        var userText = new PIXI.Text('Hello Albert!');
         userText.x = 10;
         userText.y = 200;
         userText.buttonMode = true;
@@ -61,6 +66,16 @@ export default class App extends Component {
         userText.on('pointerdown', function(){
             userText.visible = false;
             albertText.visible = true;
+            if (userInt == 1) { //cancerList
+              alert("hi");
+              for (var i = 0; i < 4; i++) {
+                cancerList[i].x = 10 + i*180;
+                cancerList[i].y = 200;
+                cancerList[i].buttonMode = true;
+                cancerList[i].interactive = true;
+                app.stage.addChild(cancerList[i]);
+              }
+            }
             userText.setText(userList[userInt]);
             userInt++;
         });
