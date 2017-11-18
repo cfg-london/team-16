@@ -6,75 +6,74 @@ export default class App extends Component {
     constructor(props) {
         super(props);
     }
-
-
     componentDidMount() {
-        // this.renderer = PIXI.autoDetectRenderer(1366, 768);
-        // this.refs.gameCanvas.appendChild(this.renderer.view);
-        // // create the root of the scene graph
-        // this.stage = new PIXI.Container();
-        // this.stage.width = 1366;
-        // this.stage.height = 768;
-        //
-        // var basicText = new PIXI.Text('Basic text in pixi');
-        // basicText.x = 30;
-        // basicText.y = 90;
-        // this.stage.addChild(basicText);
-
         var app = new PIXI.Application(1000, 300, {
             backgroundColor: 0x00FF00
         });
-
-        var circle = PIXI.Sprite.fromImage('/img/cat.png')
-
         this.refs.gameCanvas.appendChild(app.view);
-        var basicText = new PIXI.Text('wsaa');
-        basicText.x = 100;
-        basicText.y = 100;
 
-        basicText.buttonMode = true;
-        basicText.interactive = true;
+        var albert = PIXI.Sprite.fromImage('/img/cat.png')
+
+
+        albert.buttonMode = true;
+        albert.interactive = true;
 
         // Moving my circle
-        circle.anchor.set(0.5);
-        circle.x = app.renderer.width / 2;
-        circle.y = app.renderer.height / 2;
+        albert.anchor.set(0.5);
+        albert.x = (app.renderer.width * 2) / 3;
+        albert.y = app.renderer.height / 2;
 
-        app.stage.addChild(circle);
+        albert.on('pointerdown', function(){
 
-        app.ticker.add(function(delta) {
-          // just for fun, let's rotate mr rabbit a little
-          // delta is 1 if running at 100% performance
-          // creates frame-independent tranformation
-          circle.rotation += 0.1 * delta;
+
         });
 
 
-        basicText.on('pointerdown', function(){
+        app.stage.addChild(albert);
+
+        var user = PIXI.Sprite.fromImage('/img/cat.png')
+
+
+        user.buttonMode = true;
+        user.interactive = true;
+
+        // Moving my circle
+        user.anchor.set(0.5);
+        user.x = (app.renderer.width * 1) / 3;
+        user.y = app.renderer.height / 2;
+
+        user.on('pointerdown', function(){
             // app.stage.getChildAtIndex(0);
-            basicText.width *= 2;
-            basicText.height *= 2;
+            user.width *= 2;
+            user.height *= 2;
         });
-        app.stage.addChild(basicText);
+        app.stage.addChild(user);
 
-        function abc () {
-            console.log('hello, world')
-        }
+        var albertText = new PIXI.Text('....');
+        albertText.x = 500;
+        albertText.y = 100;
 
-        /*
-        this.app = new Pixi.Application(window.innerWidth, window.innerHeight);
-        this.gameCanvas.appendChild(this.app.view);
-        this.app.start();
-        */
+        albertText.buttonMode = true;
+        albertText.interactive = true;
 
-        /*
-        var cat = PIXI.Sprite.fromImage('img/cat.png');
-        cat.anchor.set(0.5);
-        cat.x = app.renderer.width / 2;
-        cat.y = app.renderer.height / 2;
+        albertText.on('pointerdown', function(){
+            albertText.setText('Hello! I am albert.');
+        });
 
-        this.stage.addChild(cat);
-        */
+        var userText = new PIXI.Text('Hi, who are you?');
+        userText.x = 300;
+        userText.y = 100;
+
+        userText.buttonMode = true;
+        userText.interactive = true;
+
+        userText.on('pointerdown', function(){
+            userText.setText('CHanged!');
+        });
+
+        app.stage.addChild(albertText);
+        app.stage.addChild(userText);
+
     }
 
 
