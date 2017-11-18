@@ -37,8 +37,8 @@ export default class Map extends Component {
         }
 
         var NUM_CIRCLES = 6;
-        var centerX = 400;
-        var centerY = 400;
+        var centerX = window.innerWidth / 2;
+        var centerY = window.innerHeight / 2;
         var ringRadius = 100;
 
 
@@ -58,7 +58,7 @@ export default class Map extends Component {
         app.stage.addChild(circle);
 
         var circles = [];
-        var colors = [0xFF000, 0xFFFF00, 0x00FF00, 0x0000FF, 0x800000, 0x008000];
+        var colors = [0xFF0000, 0xFFFF00, 0x80FF00, 0x00FFFF, 0x800000, 0xFF00FF];
         for (var i = 0; i < NUM_CIRCLES; i++) {
             var angle = (i+1) * 2 * Math.PI/NUM_CIRCLES;
             var x = centerX + Math.cos(angle) * ringRadius;
@@ -69,12 +69,17 @@ export default class Map extends Component {
             app.stage.addChild(tem);
         }
 
+        var texts = []
+        for (int i = 0; i < NUM_CIRCLES; i++) {
+            texts.push(new PIXI.Text('Basic text in pixi'));
+        }
+
         console.log(circles);
         circles.forEach(function(item){
             item.on('pointerdown', function() {
                 item.clear();
                 item.lineStyle(2, 0x000000);
-                item.beginFill(0x00FFFF, 1);
+                item.beginFill(0x00FF00, 1);
                 item.drawCircle(item.recordX, item.recordY, 10);
                 item.endFill();
             });

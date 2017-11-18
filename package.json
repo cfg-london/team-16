@@ -10,6 +10,14 @@
     "meteor-node-stubs": "~0.2.4",
     "pixi.js": "^4.6.1",
     "react": "^16.1.1",
+    "react-addons-create-fragment": "^15.6.2",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-addons-linked-state-mixin": "^15.6.2",
+    "react-addons-perf": "^15.4.2",
+    "react-addons-pure-render-mixin": "^15.6.2",
+    "react-addons-test-utils": "^15.6.2",
+    "react-addons-transition-group": "^15.6.2",
+    "react-addons-update": "^15.6.2",
     "react-dom": "^16.1.1"
   }
 }
