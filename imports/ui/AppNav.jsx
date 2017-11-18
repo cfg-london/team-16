@@ -20,6 +20,16 @@ export default class AppNav extends Component {
         <NavItem eventKey={2} href="#">Home</NavItem>
         <NavItem eventKey={3} href="#">Timeline</NavItem>
       </Nav>
+      <form action="" class="navbar-form navbar-right">
+     <div class="input-group">
+         <input type="Search" placeholder="Search..." class="form-control" />
+         <div class="input-group-btn">
+             <button class="btn btn-info">
+             <span class="glyphicon glyphicon-search"></span>
+             </button>
+         </div>
+     </div>
+  </form>
     </Navbar.Collapse>
   </Navbar>
 );
