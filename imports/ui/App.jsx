@@ -83,7 +83,6 @@ export default class App extends Component {
         return (
           <div>
           <Cloud />
-          <Cloud />
          <div className="game-canvas-container" ref="gameCanvas"></div>
          </div>
       );

@@ -46,6 +46,9 @@ export default class Cloud extends Component {
 
         //var goingLeft = true;
 
+        var leftBound = 100;
+        var RightBound = app.renderer.width / 2;
+
         app.ticker.add(()=> {
           for (var j = 0; j < numClouds; j ++) {
             if (goingLeft[j]) {
@@ -54,9 +57,9 @@ export default class Cloud extends Component {
                 sprites[j].x -= xVelocity;
             }
 
-            if (sprites[j].x > 450) {
+            if (sprites[j].x > RightBound) {
                 goingLeft[j] = false;
-            } else if (sprites[j].x <= 150){
+            } else if (sprites[j].x <= leftBound){
                 goingLeft[j] = true;
             }
           }
