@@ -98,7 +98,7 @@ export default class App extends Component {
               albertInt = albertInt + 1;
               albertText.setText(albertList[albertInt]);
               albertTurn = false;
-            } else (albertInt == 3) {
+            } else if (albertInt == 3) {
               albertInt = 0;
               albertText.visible = true;
               albertText.setText(albertList[albertInt]);
@@ -116,7 +116,7 @@ export default class App extends Component {
                 userInt = userInt + 1;
                 userText.setText(userList[userInt]);
                 albertTurn = true;
-              } else (userInt == 3) {
+              } else if (userInt == 3) {
                 userInt = 0;
                 albertText.visible = true;
                 userText.setText(userList[userInt]);
