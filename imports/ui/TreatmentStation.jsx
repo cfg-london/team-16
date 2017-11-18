@@ -27,14 +27,31 @@ export default class App extends Component {
           wordWrapWidth:950
         });
 
+        var styleHover = new PIXI.TextStyle({
+          fontFamily: 'Arvo',
+          fontSize: 20,
+          fontWeight: 'bold',
+          wordWrap: true,
+          wordWrapWidth: 950
+        });
+        var style2Hover = new PIXI.TextStyle({
+          fontFamily: 'Arvo',
+          fontSize: 20,
+          fill: ['#FF0000', '#FF0000'],
+          fontWeight: 'bold',
+          wordWrap: true,
+          wordWrapWidth: 950
+        });
+
         var graphics = new PIXI.Graphics();
-        graphics.lineStyle(0);
-        graphics.beginFill(0x606060, 0.5);
+        graphics.lineStyle(3);
+        graphics.beginFill(0x606060, 0.8);
         graphics.drawRect(0, 200, 1000, 100);
+        graphics.alpha = 0.5;
         app.stage.addChild(graphics);
 
 
-        var albert = PIXI.Sprite.fromImage('/img/cat.png')
+        var albert = PIXI.Sprite.fromImage('/img/Hat_man1.png')
         albert.buttonMode = true;
         albert.interactive = true;
         albert.anchor.set(0.5);
@@ -44,7 +61,7 @@ export default class App extends Component {
         });
         app.stage.addChild(albert);
 
-        var user = PIXI.Sprite.fromImage('/img/cat.png')
+        var user = PIXI.Sprite.fromImage('/img/Hat_man2.png');
         user.buttonMode = true;
         user.interactive = true;
         user.anchor.set(0.5);
@@ -69,6 +86,12 @@ export default class App extends Component {
         albertText.buttonMode = true;
         albertText.interactive = true;
         albertText.visible = false;
+        albertText.mouseover = function(mouseData) {
+          this.style = styleHover;
+        }
+        albertText.mouseout = function(mouseData) {
+          this.style = style;
+        }
         albertText.on('pointerdown', function(){
             userText.visible = true;
             albertText.visible = false;
@@ -80,6 +103,12 @@ export default class App extends Component {
                 treatmentList[i].buttonMode = true;
                 treatmentList[i].interactive = true;
                 treatmentList[i].visible = true;
+                treatmentList[i].mouseover = function(mouseData) {
+                  this.style = style2Hover;
+                }
+                treatmentList[i].mouseout = function(mouseData) {
+                  this.style = style2;
+                }
                 app.stage.addChild(treatmentList[i]);
               }
             }
@@ -92,6 +121,12 @@ export default class App extends Component {
         userText.y = 200;
         userText.buttonMode = true;
         userText.interactive = true;
+        userText.mouseover = function(mouseData) {
+          this.style = styleHover;
+        }
+        userText.mouseout = function(mouseData) {
+          this.style = style;
+        }
         userText.on('pointerdown', function(){
             userText.visible = false;
             albertText.visible = true;
