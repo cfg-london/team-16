@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import PIXI from 'pixi.js';
+import PIXI from 'pixi.js'
 import AppNav from './AppNav';
 
 export default class App extends Component {
     constructor(props) {
         super(props);
     }
-
 
     componentDidMount() {
         // this.renderer = PIXI.autoDetectRenderer(1366, 768);
@@ -20,6 +19,7 @@ export default class App extends Component {
         // basicText.x = 30;
         // basicText.y = 90;
         // this.stage.addChild(basicText);
+
 
         var app = new PIXI.Application(1000, 300, {
             backgroundColor: 0x00FF00
