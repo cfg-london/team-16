@@ -15,8 +15,8 @@ export default class App extends Component {
     componentDidMount() {
     }
 
-
     render() {
+      // Retuning the components for the main screen
         return (
         <div>
         <AppNav />

@@ -11,6 +11,7 @@ export default class Map extends Component {
 
     componentDidMount() {
 
+        // Initialising the PIX canvas
         var app = new PIXI.Application(window.innerWidth, window.innerHeight, {
             transparent: true
         });
@@ -22,6 +23,7 @@ export default class Map extends Component {
             return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
         }
 
+        // Initialising the clouds for the brackground
         var numClouds = 5;
 
         var sprites = new Array(numClouds);
@@ -34,6 +36,7 @@ export default class Map extends Component {
           spritesRight[i] = PIXI.Sprite.fromImage('/img/cloud3.png')
         }
 
+        // Giving the clouds random positions
         for (var i = 0; i < numClouds; i ++) {
           var randy = Math.random()*app.renderer.height;
           var randx = Math.random()*app.renderer.width;
@@ -53,6 +56,7 @@ export default class Map extends Component {
             diff += 10;
         }
 
+        // Functions to make the clouds move
         var xVelocity = 1;
         var yVelocity = 1;
 
@@ -63,8 +67,6 @@ export default class Map extends Component {
           goingLeft[i] = true;
           goingRight[i] = true;
         }
-
-        //var goingLeft = true;
 
         var leftBound = 100;
         var RightBound = app.renderer.width / 2;
@@ -101,7 +103,7 @@ export default class Map extends Component {
         });
 
 
-        // Moving my circle
+        // Function to create the circles
         function createCircle(x, y, color) {
             var circle = new PIXI.Graphics();
             circle.lineStyle(2, 0x000000);
@@ -118,6 +120,7 @@ export default class Map extends Component {
         }
 
 
+        // Global variables used when calculating circle positions
         var NUM_CIRCLES = 8;
         var centerX = window.innerWidth / 2;
         var centerY = window.innerHeight / 2;
@@ -126,7 +129,7 @@ export default class Map extends Component {
         var textY = centerY - ringRadius;
         var circles = [];
 
-
+        // Initialising outer circle frame
         var circle = new PIXI.Graphics();
         circle.lineStyle(5, 0x000000);
         circle.beginFill(0xFFFFFF, 0.2);
@@ -142,8 +145,7 @@ export default class Map extends Component {
 
         app.stage.addChild(circle);
 
-
-
+        // 'Database' for the top tips!, eventually will want to move to a db, or pull from an API
         var texts = []
         texts.push('Staying in touch with friends: \n - I got in touch with my friends via Facetime or Skype. That is something I really enjoyed \n - See if your friends can visit you \n - Online games');
         texts.push(180);
@@ -162,6 +164,7 @@ export default class Map extends Component {
         texts.push('CLIC Sargent says: \n - Ask our experts \n - Read stories like yours \n - Join CYPAG \n - Read Shout Out! magazine \n - Share with your friends')
         texts.push(210);
 
+        // Draws the side circles in their original colour
         function resetCircles() {
           var colors = [0xcc66ff, 0xff99ff, 0xff5050, 0xff9966, 0xffff99, 0x99ff99, 0x66ffff, 0x4d94ff];
           for (var i = 0; i < NUM_CIRCLES; i++) {
@@ -175,6 +178,7 @@ export default class Map extends Component {
           }
         }
 
+        // Text stlye for tips
         var style = new PIXI.TextStyle({
             fontFamily: 'Arial',
             fontSize: 36,
@@ -189,14 +193,15 @@ export default class Map extends Component {
 
         resetCircles();
 
-        var richText = new PIXI.Text('Click the circles \n  for Top Tips!', style);
+        // Initial text
+        var richText = new PIXI.Text('Click the circles \n   for Top Tips \n during treatment', style);
         richText.x = textX + 100;
         richText.y = textY + 300;
-
         app.stage.addChild(richText);
 
         var count = 0;
 
+        // Adding function so that each circle changes colour and prints the corresponding tip when clicked
         console.log(circles);
         circles.forEach(function(item) {
             item.on('pointerdown', function() {
