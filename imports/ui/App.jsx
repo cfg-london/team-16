@@ -4,6 +4,7 @@ import Cloud from './Cloud.jsx'
 import AppNav from './AppNav.jsx'
 import Station from './Station.jsx'
 import TreatmentStation from './TreatmentStation.jsx'
+import Map from './Map.jsx'
 
 
 export default class App extends Component {
@@ -91,6 +92,7 @@ export default class App extends Component {
         <Cloud />
         <Station />
         <TreatmentStation />
+        <Map />
          <div className="game-canvas-container" ref="gameCanvas"></div>
          </div>
         );
