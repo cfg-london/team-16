@@ -1,1 +1,21 @@
 /* CSS declarations go here */
+
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(#0aa2e3, #77cde6);
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+.navbar-default {
+    background: none;
+    background-image: none;
+    height: 20px;
+    border: 0;
+}
