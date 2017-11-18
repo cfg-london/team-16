@@ -7,8 +7,6 @@ export default class Cloud extends Component {
         super(props);
     }
 
-
-
     componentDidMount() {
 
         function getRandomInt(min, max) {
@@ -38,8 +36,8 @@ export default class Cloud extends Component {
         }
 
         for (var i = 0; i < numClouds; i ++) {
-          var randy = Math.random()*app.renderer.height;
-          var randx = Math.random()*app.renderer.width;
+          var randy = app.renderer.height*i/numClouds + Math.random()*app.renderer.height/(2*numClouds);
+          var randx = app.renderer.width*i/numClouds + Math.random()*app.renderer.width/(2*numClouds);
 
           sprites[i].x =  randx;
           sprites[i].y =  randy;
@@ -48,8 +46,8 @@ export default class Cloud extends Component {
 
         var diff = 10;
         for (var i = 0; i < numClouds; i++) {
-            var randy = Math.random()*app.renderer.height;
-            var randx = app.renderer.width - diff - getRandomInt(10, 40);
+            var randy = i*app.renderer.height/numClouds + Math.random()*app.renderer.height/(2*numClouds);
+            var randx = i*app.renderer.width/numClouds + (app.renderer.width - diff)/(2*numClouds);
             spritesRight[i].x = randx
             spritesRight[i].y = randy
             app.stage.addChild(spritesRight[i]);
