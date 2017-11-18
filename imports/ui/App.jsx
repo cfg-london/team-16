@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import PIXI from 'pixi.js'
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import AppNav from './AppNav';
 
 export default class App extends Component {
@@ -85,7 +84,6 @@ export default class App extends Component {
         return (
          <div>
          <AppNav />
-         <AccountsUIWrapper />
          <div className="game-canvas-container" ref="gameCanvas"></div>
          </div>
       );
