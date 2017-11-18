@@ -104,10 +104,13 @@ export default class Cloud extends Component {
           }
         });
 
+        var diffX = 600;
+        var diffY = 130;
+
         function createImageFromPath(dir, x, y) {
             var image = PIXI.Sprite.fromImage('/img/mapPieces/'+dir);
-            image.x = x;
-            image.y = y;
+            image.x = x + diffX;
+            image.y = y + diffY;
             image.scale.x = 0.5;
             image.scale.y = 0.5;
             image.buttonMode = true;
@@ -122,6 +125,9 @@ export default class Cloud extends Component {
         createImageFromPath('piece1.png', 10, 10);
         createImageFromPath('piece2.png', 265, 26);
         createImageFromPath('piece3.png', 265+143, 26+120);
+        createImageFromPath('piece4.png', 265+143-290, 26+120+40);
+        createImageFromPath('piece5.png', 265+143-290-255, 26+120+40+68);
+        createImageFromPath('piece6.png', 265+143-290-255+50+50+42, 26+120+40+68+250);
         // createImageFromPath('piece2.png', 40, 40);
         // createImageFromPath('piece3.png', 80, 80);
         // createImageFromPath('piece4.png', 120, 120);
