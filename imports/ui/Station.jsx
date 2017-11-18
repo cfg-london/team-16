@@ -45,6 +45,11 @@ export default class App extends Component {
                           new PIXI.Text('Hodgkin lymphoma'),
                           new PIXI.Text('Melanoma')]
 
+        var style = new PIXI.TextStyle({
+          fontFamily: 'Arvo',
+          fontSize: 20,
+        });
+
         var albertText = new PIXI.Text('Hi!');
         albertText.x = 10;
         albertText.y = 200;
