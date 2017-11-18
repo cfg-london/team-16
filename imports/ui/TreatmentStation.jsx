@@ -61,7 +61,7 @@ export default class App extends Component {
         var style2Hover = new PIXI.TextStyle({
           fontFamily: 'Arvo',
           fontSize: 20,
-          fill: ['#FF0000', '#FF0000'],
+          fill: ['#FF8c00', '#FF8c00'],
           fontWeight: 'bold',
           wordWrap: true,
           wordWrapWidth: 950
@@ -105,8 +105,8 @@ export default class App extends Component {
         var treatmentList = [new PIXI.Text('Surgery', style2), new PIXI.Text('Chemotherapy', style2), new PIXI.Text('Radiotherapy', style2)];
 
         var albertText = new PIXI.Text('Albert: Depending on your situation, you might have to do surgery, radiotherapy, or chemotherapy. What did the doctor tell you?', style);
-        albertText.x = 10;
-        albertText.y = 200;
+        albertText.x = 40;
+        albertText.y = 240;
         albertText.buttonMode = true;
         albertText.interactive = true;
         albertText.visible = false;
@@ -122,8 +122,8 @@ export default class App extends Component {
             if (userInt == 1) { //treatment list
               userText.visible = false;
               for (i = 0; i < 3; i++) {
-                treatmentList[i].x = 10 + i * 300;
-                treatmentList[i].y = 200;
+                treatmentList[i].x = 40 + i * 300;
+                treatmentList[i].y = 240;
                 treatmentList[i].buttonMode = true;
                 treatmentList[i].interactive = true;
                 treatmentList[i].visible = true;
@@ -141,8 +141,8 @@ export default class App extends Component {
         });
 
         var userText = new PIXI.Text('You: What treatment do I need?', style);
-        userText.x = 10;
-        userText.y = 200;
+        userText.x = 40;
+        userText.y = 240;
         userText.buttonMode = true;
         userText.interactive = true;
         userText.mouseover = function(mouseData) {
