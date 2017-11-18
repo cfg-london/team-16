@@ -88,8 +88,7 @@ export default class App extends Component {
          <AppNav />
          <p classID="helo"> jel </p>
          <div className="game-canvas-container" ref="gameCanvas"></div>
-         </div>
-         <div>
+
          <Station />
           <div className="game-canvas-container" ref="gameCanvas"></div>
           </div>
