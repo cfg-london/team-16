@@ -232,16 +232,9 @@ export default class Map extends Component {
             image.on('pointerdown', function(){
                 console.log('hello');
             });
-            
+
             app.stage.addChild(image);
         }
-
-        createImageFromPath('piece1.png', 10, 10);
-        createImageFromPath('piece2.png', 40, 40);
-        createImageFromPath('piece3.png', 80, 80);
-        createImageFromPath('piece4.png', 120, 120);
-        createImageFromPath('piece5.png', 140, 140);
-        createImageFromPath('piece6.png', 160, 160);
 
     }
 
