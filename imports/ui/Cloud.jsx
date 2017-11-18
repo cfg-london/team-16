@@ -17,17 +17,17 @@ export default class Cloud extends Component {
 
         //var sprite = PIXI.Sprite.fromImage('/img/cloud2.png');
 
-        var numClouds = 5;
+        var numClouds = 10;
 
         var sprites = new Array(numClouds);
         for (var i = 0; i < numClouds; i ++) {
-          sprites[i] = PIXI.Sprite.fromImage('/img/cloud2.png')
+          sprites[i] = PIXI.Sprite.fromImage('/img/cloud3.png')
         }
 
 
         for (var i = 0; i < numClouds; i ++) {
-          var randy = Math.random()*app.renderer.width / 2;
-          var randx = Math.random()*app.renderer.width / 2;
+          var randy = Math.random()*app.renderer.width;
+          var randx = Math.random()*app.renderer.width;
 
           sprites[i].x =  randx;
           sprites[i].y =  randy;
