@@ -32,7 +32,9 @@ export default class App extends Component {
           fontFamily: 'Arvo',
           fontSize: 20,
           wordWrap: true,
-          wordWrapWidth: 950
+          wordWrapWidth: 950,
+          paddingTop: 50,
+          paddingLeft: 80
         });
 
         var style2 = new PIXI.TextStyle({
@@ -40,7 +42,9 @@ export default class App extends Component {
           fontSize: 20,
           fill: ['#FF0000', '#FF0000'],
           wordWrap: true,
-          wordWrapWidth:950
+          wordWrapWidth:950,
+          paddingTop: 100,
+          paddingLeft: 80
         });
 
         var styleHover = new PIXI.TextStyle({
@@ -48,7 +52,11 @@ export default class App extends Component {
           fontSize: 20,
           fontWeight: 'bold',
           wordWrap: true,
-          wordWrapWidth: 950
+          wordWrapWidth: 950,
+          paddingTop: 50,
+          paddingLeft: 80,
+          paddingTop: 100,
+          paddingLeft: 80
         });
         var style2Hover = new PIXI.TextStyle({
           fontFamily: 'Arvo',
