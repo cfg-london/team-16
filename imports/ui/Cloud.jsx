@@ -102,8 +102,8 @@ export default class Cloud extends Component {
           }
         });
 
-        var diffX = 500;
-        var diffY = 70;
+        var diffX = 400;
+        var diffY = 20;
 
         function createImageFromPath(dir, x, y) {
             var image = PIXI.Sprite.fromImage('/img/mapPieces/'+dir);
@@ -113,10 +113,19 @@ export default class Cloud extends Component {
             image.scale.y = 0.5;
             image.buttonMode = true;
             image.interactive = true;
-
-            image.on('pointerdown', function(){
-                console.log(window.scrollTo(0,1000));
-            });
+            if (image.x - diffX <= 10) {
+                image.on('pointerdown', function(){
+                    window.scrollTo(0, 1200);
+                });
+            } else if (image.x - diffX <= 265) {
+                image.on('pointerdown', function(){
+                    window.scrollTo(0, 800);
+                });
+            } else if (image.x - diffX <= 265+143) {
+                image.on('pointerdown', function(){
+                    window.scrollTo(0, 1700);
+                });
+            }
             app.stage.addChild(image);
         }
 
@@ -126,12 +135,6 @@ export default class Cloud extends Component {
         createImageFromPath('piece4.png', 265+143-290, 26+120+40);
         createImageFromPath('piece5.png', 265+143-290-255, 26+120+40+68);
         createImageFromPath('piece6.png', 265+143-290-255+50+50+42, 26+120+40+68+250);
-        // createImageFromPath('piece2.png', 40, 40);
-        // createImageFromPath('piece3.png', 80, 80);
-        // createImageFromPath('piece4.png', 120, 120);
-        // createImageFromPath('piece5.png', 140, 140);
-        // createImageFromPath('piece6.png', 160, 160);
-
     }
 
 
