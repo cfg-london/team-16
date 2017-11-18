@@ -16,9 +16,9 @@ export default class AppNav extends Component {
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav pullRight>
-        <NavItem eventKey={1} href="#">Link Right</NavItem>
+        <NavItem eventKey={1}><AccountsUIWrapper /></NavItem>
         <NavItem eventKey={2} href="#">Link Right</NavItem>
-        <NavItem eventKey={3}><AccountsUIWrapper /></NavItem>
+        <NavItem eventKey={3} href="#">Link Right</NavItem>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
