@@ -84,6 +84,7 @@ export default class App extends Component {
         return (
          <div>
          <AppNav />
+         <p classID="helo"> jel </p>
          <div className="game-canvas-container" ref="gameCanvas"></div>
          </div>
       );
