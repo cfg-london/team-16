@@ -13,14 +13,9 @@ export default class Map extends Component {
             backgroundColor: 0xFFFFFF
         });
 
-
-
-
         this.refs.gameCanvas.appendChild(app.view);
 
         // Moving my circle
-
-
         function createCircle(x, y, color) {
             var circle = new PIXI.Graphics();
             circle.lineStyle(2, 0x000000);
@@ -70,7 +65,7 @@ export default class Map extends Component {
         }
 
         var texts = []
-        for (int i = 0; i < NUM_CIRCLES; i++) {
+        for (var i = 0; i < NUM_CIRCLES; i++) {
             texts.push(new PIXI.Text('Basic text in pixi'));
         }
 
@@ -85,7 +80,6 @@ export default class Map extends Component {
             });
         })
     }
-
 
     render() {
         return (
