@@ -31,12 +31,14 @@ export default class Map extends Component {
             return circle
         }
 
+
         var NUM_CIRCLES = 8;
         var centerX = window.innerWidth / 2;
         var centerY = window.innerHeight / 2;
         var ringRadius = 350;
         var textX = centerX - ringRadius + 120;
         var textY = centerY - ringRadius;
+        var circles = [];
 
 
         var circle = new PIXI.Graphics();
@@ -54,17 +56,7 @@ export default class Map extends Component {
 
         app.stage.addChild(circle);
 
-        var circles = [];
-        var colors = [0xcc66ff, 0xff99ff, 0xff5050, 0xff9966, 0xffff99, 0x99ff99, 0x66ffff, 0x4d94ff];
-        for (var i = 0; i < NUM_CIRCLES; i++) {
-            var angle = (i+1) * 2 * Math.PI/NUM_CIRCLES;
-            var x = centerX + Math.cos(angle) * ringRadius;
-            var y = centerY + Math.sin(angle) * ringRadius;
 
-            var tem = createCircle(x, y, colors[i]);
-            circles.push(tem);
-            app.stage.addChild(tem);
-        }
 
         var texts = []
         texts.push('Staying in touch with friends: \n - I got in touch with my friends via Facetime or Skype. That is something I really enjoyed \n - See if your friends can visit you \n - Online games');
@@ -84,6 +76,18 @@ export default class Map extends Component {
         texts.push('CLIC Sargent says: \n - Ask our experts \n - Read stories like yours \n - Join CYPAG \n - Read Shout Out! magazine \n - Share with your friends')
         texts.push(210);
 
+        function resetCircles() {
+          var colors = [0xcc66ff, 0xff99ff, 0xff5050, 0xff9966, 0xffff99, 0x99ff99, 0x66ffff, 0x4d94ff];
+          for (var i = 0; i < NUM_CIRCLES; i++) {
+              var angle = (i+1) * 2 * Math.PI/NUM_CIRCLES;
+              var x = centerX + Math.cos(angle) * ringRadius;
+              var y = centerY + Math.sin(angle) * ringRadius;
+
+              var tem = createCircle(x, y, colors[i]);
+              circles.push(tem);
+              app.stage.addChild(tem);
+          }
+        }
 
         var style = new PIXI.TextStyle({
             fontFamily: 'Arial',
@@ -96,6 +100,8 @@ export default class Map extends Component {
             wordWrap: true,
             wordWrapWidth: 480
         });
+
+        resetCircles();
 
         var richText = new PIXI.Text('Click the circles \n  for Top Tips!', style);
         richText.x = textX + 100;
@@ -117,6 +123,14 @@ export default class Map extends Component {
                 richText = new PIXI.Text(texts[2*count], style);
                 richText.x = textX;
                 richText.y = textY + texts[2*count+1];
+
+                if(count > 8) {
+                  richText = new PIXI.Text('Click the circles \n  for Top Tips!', style);
+                  richText.x = textX + 100;
+                  richText.y = textY + 300;
+                  count = -1;
+                  resetCircles();
+                }
                 app.stage.addChild(richText);
                 count++;
             });

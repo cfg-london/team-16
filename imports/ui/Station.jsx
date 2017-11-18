@@ -8,9 +8,29 @@ export default class App extends Component {
     }
     componentDidMount() {
         var app = new PIXI.Application(1000, 300, {
+            // backgroundImage: url("/img/forest.jpg")
             backgroundColor: 0xFFFFFF
+
         });
         this.refs.gameCanvas.appendChild(app.view);
+
+        var landscapeTexture = PIXI.Texture.fromImage("/img/forestCrop.jpg");
+
+        // crop the texture to show just 100 px
+        var texture2 = new PIXI.Texture(landscapeTexture, new PIXI.Rectangle(0, 0, 790, 490));
+
+        // new sprite
+        var background = new PIXI.Sprite(texture2);
+
+
+        background.anchor.x = 0;
+        background.anchor.y = 0;
+
+        background.position.x = 0;
+        background.position.y = 0;
+
+        app.stage.addChild( background );
+
 
         var style = new PIXI.TextStyle({
           fontFamily: 'Arvo',
@@ -36,15 +56,15 @@ export default class App extends Component {
         });
 
         var graphics = new PIXI.Graphics();
-        graphics.lineStyle(0);
-        graphics.beginFill(0x606060, 0.5);
+        graphics.lineStyle(3);
+        graphics.beginFill(0x606060, 0.8);
         graphics.drawRect(0, 200, 1000, 100);
+        graphics.alpha = 0.5;
         app.stage.addChild(graphics);
 
 
         var albert = PIXI.Sprite.fromImage('/img/Hat_man1.png');
-        // albert.buttonMode = true;
-        // albert.interactive = true;
+
         albert.anchor.set(0.5);
         albert.x = (app.renderer.width * 2) / 3;
         albert.y = app.renderer.height / 2;
@@ -53,8 +73,7 @@ export default class App extends Component {
         app.stage.addChild(albert);
 
         var user = PIXI.Sprite.fromImage('/img/Hat_man2.png');
-        // user.buttonMode = true;
-        // user.interactive = true;
+
         user.anchor.set(0.5);
         user.x = (app.renderer.width * 1) / 3;
         user.y = app.renderer.height / 2;
