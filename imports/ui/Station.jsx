@@ -40,6 +40,11 @@ export default class App extends Component {
         var userInt = 0;
         var userList = ['My doctor told me I have bone cancer, what should I do?'];
 
+        var style = new PIXI.TextStyle({
+          fontFamily: 'Arvo',
+          fontSize: 20,
+        });
+
         var albertText = new PIXI.Text('Hi!');
         albertText.x = 10;
         albertText.y = 200;
