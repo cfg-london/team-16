@@ -12,6 +12,9 @@ body {
 }
 
 
+.paddingSpace {
+  padding-top: 350px; 
+}
 
 .navbar-default {
     background: none !important;

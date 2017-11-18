@@ -25,13 +25,17 @@ export default class App extends Component {
         <div>
         <AppNav />
         <Cloud />
+        <div class="paddingSpace"/>
         <center><Station /></center>
         <button onClick={this.scrollToTop} style={{margin:"auto", display:"block"}}> Continue your journey</button>
+        <div class="paddingSpace"/>
         <Map />
         <button onClick={this.scrollToTop} style={{margin:"auto", display:"block"}}> Continue your journey</button>
+        <div class="paddingSpace"/>
         <center><TreatmentStation /></center>
         <button onClick={this.scrollToTop} style={{margin:"auto", display:"block"}}> Continue your journey</button>
-         <div className="game-canvas-container" ref="gameCanvas"></div>
+        <div class="paddingSpace"/>
+       <div className="game-canvas-container" ref="gameCanvas"></div>
          </div>
         );
     }
