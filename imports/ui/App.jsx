@@ -82,6 +82,7 @@ export default class App extends Component {
     render() {
         return (
           <div>
+          <AppNav/>
           <Cloud />
          <div className="game-canvas-container" ref="gameCanvas"></div>
          </div>
