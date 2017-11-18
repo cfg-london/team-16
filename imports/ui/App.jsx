@@ -84,14 +84,11 @@ export default class App extends Component {
 
     render() {
         return (
-         <div>
-         <AppNav />
-         <p classID="helo"> jel </p>
+        <div>
+        <AppNav />
+        <Station />
          <div className="game-canvas-container" ref="gameCanvas"></div>
-
-         <Station />
-          <div className="game-canvas-container" ref="gameCanvas"></div>
-          </div>
-      );
+         </div>
+        );
     }
 }
