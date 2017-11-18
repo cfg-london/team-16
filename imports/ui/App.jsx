@@ -10,9 +10,13 @@ import Map from './Map.jsx'
 export default class App extends Component {
     constructor(props) {
         super(props);
-    }
+      }
 
     componentDidMount() {
+    }
+
+    scrollToTop() {
+      window.scrollTo(0, 0);
     }
 
 
@@ -23,6 +27,7 @@ export default class App extends Component {
         <Cloud />
         <center><Station /></center>
         <center><TreatmentStation /></center>
+        <button onClick={this.scrollToTop} style={{margin:"auto", display:"block"}}> Continue your journey</button>
         <Map />
          <div className="game-canvas-container" ref="gameCanvas"></div>
          </div>
