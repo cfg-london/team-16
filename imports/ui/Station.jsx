@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import PIXI from 'pixi.js'
-import Station from './Station.jsx'
+//import Station from 'Station.jsx'
 
 export default class App extends Component {
     constructor(props) {
@@ -80,10 +80,7 @@ export default class App extends Component {
 
     render() {
         return (
-        <div>
-        <Station />
          <div className="game-canvas-container" ref="gameCanvas"></div>
-         </div>
         );
     }
 }
