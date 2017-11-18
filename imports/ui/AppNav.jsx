@@ -7,7 +7,7 @@ export default class AppNav extends Component {
 
   render() {
     return (
-      <Navbar>
+    <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
         <a href="#">React-Bootstrap</a>
